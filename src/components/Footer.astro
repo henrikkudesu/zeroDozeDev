@@ -1,0 +1,133 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-[#0f172a] text-white py-16">
+  <div class="container mx-auto px-6">
+    <!-- Conteúdo principal do footer -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-14">
+      <!-- Coluna 1: Logo e Sobre -->
+      <div class="col-span-1 text-center md:text-left">
+        <div class="flex flex-col items-center md:items-start">
+          <span
+            class="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"
+          >
+            &lt;zeroDozeDev/&gt;
+          </span>
+          <p class="text-slate-400 mb-6 leading-relaxed">
+            Criamos experiências digitais que impulsionam resultados e
+            estabelecem conexões significativas para seu negócio.
+          </p>
+          <div class="flex space-x-6">
+            <a
+              href="#"
+              class="text-slate-400 hover:text-blue-400 transition-all duration-300 hover:scale-110"
+              aria-label="Siga-nos no Twitter"
+            >
+              <i class="fab fa-twitter text-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="text-slate-400 hover:text-blue-400 transition-all duration-300 hover:scale-110"
+              aria-label="Conecte-se no LinkedIn"
+            >
+              <i class="fab fa-linkedin-in text-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="text-slate-400 hover:text-blue-400 transition-all duration-300 hover:scale-110"
+              aria-label="Veja nosso GitHub"
+            >
+              <i class="fab fa-github text-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="text-slate-400 hover:text-blue-400 transition-all duration-300 hover:scale-110"
+              aria-label="Confira nosso Dribbble"
+            >
+              <i class="fab fa-dribbble text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna 2: Serviços -->
+      <div class="col-span-1 text-center md:text-left">
+        <h3 class="text-lg font-bold mb-6 text-white">Serviços</h3>
+        <ul class="space-y-3">
+          {
+            [
+              'Desenvolvimento Web',
+              'Design UI/UX',
+              'Loja Virtual',
+              'SEO',
+              'Manutenção',
+            ].map((service) => (
+              <li>
+                <a
+                  href="#services"
+                  class="text-slate-400 hover:text-blue-400 transition-all duration-300 inline-block hover:translate-x-2"
+                >
+                  {service}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Coluna 3: Empresa -->
+      <div class="col-span-1 text-center md:text-left">
+        <h3 class="text-lg font-bold mb-6 text-white">Empresa</h3>
+        <ul class="space-y-3">
+          {
+            ['Sobre Nós', 'Nossa Equipe', 'Contato'].map((item) => (
+              <li>
+                <a
+                  href="#about"
+                  class="text-slate-400 hover:text-blue-400 transition-all duration-300 inline-block hover:translate-x-2"
+                >
+                  {item}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Coluna 4: Contato -->
+      <div class="col-span-1 text-center md:text-left">
+        <h3 class="text-lg font-bold mb-6 text-white">Contato</h3>
+        <ul class="space-y-4">
+          <li class="flex items-start justify-center md:justify-start">
+            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+            <span class="text-slate-400">Guaratinguetá, SP</span>
+          </li>
+          <li class="flex items-center justify-center md:justify-start">
+            <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
+            <span class="text-slate-400">(12) 99753-7263</span>
+          </li>
+          <li class="flex items-center justify-center md:justify-start">
+            <i class="fas fa-envelope mr-3 text-blue-400"></i>
+            <span class="text-slate-400">leo_hns@hotmail.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Rodapé inferior - separado do grid principal -->
+    <div class="border-t border-slate-800 pt-8 text-center">
+      <p class="text-slate-500">
+        &copy; {currentYear} zeroDozeDev. Todos os direitos reservados.
+      </p>
+    </div>
+  </div>
+
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      a {
+        transition: none !important;
+      }
+    }
+  </style>
+</footer>

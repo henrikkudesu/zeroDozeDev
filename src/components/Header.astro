@@ -1,0 +1,330 @@
+---
+import { Image } from 'astro:assets';
+import logoImage from '../assets/social-image.svg';
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = 'home' } = Astro.props;
+---
+
+<header
+  class="fixed top-0 left-0 w-full z-50 bg-[#0f172a]/90 backdrop-blur-md border-b border-slate-800"
+  role="banner"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo e nome da empresa -->
+      <div class="flex items-center">
+        <a
+          href="/"
+          class="flex items-center gap-3 group"
+          aria-label="Página inicial"
+        >
+          <div class="w-[82px] h-[82px] overflow-hidden rounded-lg">
+            <Image
+              src={logoImage}
+              alt="Logo zeroDoze Dev"
+              width={64}
+              height={64}
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            />
+          </div>
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 text-xl font-bold"
+          >
+            &lt;zeroDozeDev/&gt;
+          </span>
+        </a>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex space-x-8" aria-label="Navegação principal">
+        <ul class="flex space-x-8">
+          <li>
+            <a
+              href="/"
+              class="nav-link"
+              aria-current={currentPage === 'home' ? 'page' : undefined}
+              >Início</a
+            >
+          </li>
+          <li>
+            <a
+              href="#services"
+              class="nav-link"
+              aria-current={currentPage === 'services' ? 'page' : undefined}
+              >Serviços</a
+            >
+          </li>
+          <!-- <li>
+            <a
+              href="#work"
+              class="nav-link"
+              aria-current={currentPage === 'work' ? 'page' : undefined}
+              >Projetos</a
+            >
+          </li>
+          -->
+          <li>
+            <a
+              href="/about"
+              class="nav-link"
+              aria-current={currentPage === 'about' ? 'page' : undefined}
+              >Sobre</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="nav-link"
+              aria-current={currentPage === 'contact' ? 'page' : undefined}
+              >Contato</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- CTA -->
+      <div class="hidden md:block">
+        <a href="#contact" class="btn-cta">
+          <span>Fale Conosco</span>
+        </a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <div class="md:hidden">
+        <button
+          id="mobile-menu-toggle"
+          class="text-slate-300 p-2 focus:outline-none"
+          aria-label="Menu de navegação"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <!-- Hamburger Icon -->
+          <svg
+            id="icon-menu"
+            class="w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <!-- Close Icon -->
+          <svg
+            id="icon-close"
+            class="w-6 h-6 hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden opacity-0 visibility-hidden md:hidden bg-[#0f172a]/95 absolute top-20 w-full border-t border-slate-800 transition-all duration-300"
+    aria-labelledby="mobile-menu-toggle"
+  >
+    <nav class="flex flex-col space-y-4 p-4" aria-label="Navegação mobile">
+      <a
+        href="#home"
+        class="mobile-link"
+        aria-current={currentPage === 'home' ? 'page' : undefined}>Início</a
+      >
+      <a
+        href="#services"
+        class="mobile-link"
+        aria-current={currentPage === 'services' ? 'page' : undefined}
+        >Serviços</a
+      >
+      <a
+        href="#work"
+        class="mobile-link"
+        aria-current={currentPage === 'work' ? 'page' : undefined}>Projetos</a
+      >
+      <a
+        href="#about"
+        class="mobile-link"
+        aria-current={currentPage === 'about' ? 'page' : undefined}>Sobre</a
+      >
+      <a
+        href="#contact"
+        class="mobile-link"
+        aria-current={currentPage === 'contact' ? 'page' : undefined}>Contato</a
+      >
+      <a href="#contact" class="btn-cta mt-2">Fale Conosco</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  header {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  .nav-link,
+  .mobile-link {
+    position: relative;
+    color: #cbd5e1;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover,
+  .mobile-link:hover {
+    color: #fff;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: #3b82f6;
+    transition: width 0.3s;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.625rem 1.25rem;
+    background: linear-gradient(to right, #3b82f6, #a855f7);
+    color: #fff;
+    border-radius: 0.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-cta:hover {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+  }
+
+  .btn-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: 0.3s;
+  }
+
+  #mobile-menu {
+    transition:
+      opacity 0.1s ease,
+      visibility 0.1s ease;
+    height: 0;
+    overflow: hidden;
+  }
+
+  #mobile-menu:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
+</style>
+
+<script>
+  class MobileMenu {
+    private btn: HTMLElement;
+    private menu: HTMLElement;
+    private iconMenu: HTMLElement;
+    private iconClose: HTMLElement;
+    private isOpen: boolean = false;
+
+    constructor() {
+      this.btn = document.getElementById('mobile-menu-toggle')!;
+      this.menu = document.getElementById('mobile-menu')!;
+      this.iconMenu = document.getElementById('icon-menu')!;
+      this.iconClose = document.getElementById('icon-close')!;
+      this.init();
+    }
+
+    private init(): void {
+      this.btn.addEventListener('click', () => this.toggleMenu());
+
+      // Fecha menu ao clicar fora
+      document.addEventListener('click', (e) => {
+        if (
+          !this.menu.contains(e.target as Node) &&
+          !this.btn.contains(e.target as Node) &&
+          this.isOpen
+        ) {
+          this.toggleMenu();
+        }
+      });
+
+      // Fecha menu ao pressionar ESC
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.isOpen) {
+          this.toggleMenu();
+        }
+      });
+    }
+
+    private toggleMenu(): void {
+      this.isOpen = !this.isOpen;
+
+      // Primeiro remove 'hidden' para permitir a transição
+      if (this.isOpen) {
+        this.menu.classList.remove('hidden');
+      }
+
+      // Controla visibilidade com transição suave
+      this.menu.classList.toggle('opacity-0', !this.isOpen);
+      this.menu.classList.toggle('visibility-hidden', !this.isOpen);
+
+      this.iconMenu.classList.toggle('hidden', this.isOpen);
+      this.iconClose.classList.toggle('hidden', !this.isOpen);
+      this.btn.setAttribute('aria-expanded', String(this.isOpen));
+
+      // Se estiver fechando, adiciona 'hidden' após a transição
+      if (!this.isOpen) {
+        setTimeout(() => {
+          this.menu.classList.add('hidden');
+        }, 75);
+      }
+    }
+  }
+
+  // Inicializa o menu mobile
+  document.addEventListener('DOMContentLoaded', () => {
+    new MobileMenu();
+  });
+</script>

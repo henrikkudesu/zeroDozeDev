@@ -1,0 +1,148 @@
+---
+import { icon } from '@fortawesome/fontawesome-svg-core';
+import type { IconName } from '@fortawesome/fontawesome-svg-core';
+import '../../utils/fontawesome';
+
+// Interfaces para definição dos tipos de dados
+interface ServiceFeature {
+  text: string;
+  highlighted?: boolean;
+}
+
+interface Props {
+  service: {
+    title: string;
+    description: string;
+    icon: string;
+    features?: ServiceFeature[];
+  };
+}
+
+const { service } = Astro.props;
+
+// Função para gerar HTML do ícone a partir do nome
+function generateIconHtml(iconName: IconName) {
+  const faIcon = icon({ prefix: 'fas', iconName });
+  return faIcon?.html || '';
+}
+
+// Preparação dos ícones necessários
+const mainIconName = service.icon.replace('fas fa-', '') as IconName;
+const mainIconSvg = generateIconHtml(mainIconName);
+const checkIconSvg = generateIconHtml('check-circle');
+---
+
+<!-- Card principal do serviço com gradiente e efeitos de hover -->
+<article
+  class="card-gradient group p-8 rounded-2xl transition-all duration-300 bg-slate-800/30 border border-slate-700/30 shadow-lg hover:shadow-2xl hover:-translate-y-1"
+  tabindex="0"
+>
+  <!-- Wrapper do ícone principal com animação de pulso -->
+  <div
+    class="service-icon-wrapper w-16 h-16 rounded-lg flex items-center justify-center mb-6 bg-gradient-to-br from-blue-500/20 to-purple-500/20 transition-transform duration-300 group-hover:scale-110"
+    aria-hidden="true"
+  >
+    <div
+      class="w-10 h-10 text-blue-400 group-hover:text-blue-300 transition-colors duration-300 flex items-center justify-center"
+      set:html={mainIconSvg}
+    />
+  </div>
+
+  <!-- Seção de conteúdo com título, descrição e features -->
+  <div class="space-y-4">
+    <!-- Título com efeito de gradiente no hover -->
+    <h3
+      class="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-500 transition-all duration-300"
+    >
+      {service.title}
+    </h3>
+
+    <p class="text-slate-400 leading-relaxed">
+      {service.description}
+    </p>
+
+    <!-- Lista de características com ícones de check -->
+    {
+      service.features && service.features.length > 0 && (
+        <ul class="space-y-3 text-slate-400 pt-2" role="list">
+          {service.features.map((feature) => (
+            <li
+              class:list={[
+                'flex items-center group/item',
+                'hover:text-slate-300 transition-colors duration-300',
+                { 'text-slate-300 font-medium': feature.highlighted },
+              ]}
+            >
+              <span
+                class="w-4 h-4 mr-3 text-green-400 group-hover/item:text-green-300 transition-colors duration-300"
+                set:html={checkIconSvg}
+                aria-hidden="true"
+              />
+              {feature.text}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  /* Estilos globais para ícones FontAwesome */
+  :global(.svg-inline--fa) {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.1));
+    box-sizing: content-box;
+    display: inline-block;
+    vertical-align: -0.125em;
+  }
+
+  /* Gradiente de fundo do card com efeito de glass morphism */
+  .card-gradient {
+    background: linear-gradient(
+      145deg,
+      rgba(30, 41, 59, 0.2) 0%,
+      rgba(15, 23, 42, 0.2) 100%
+    );
+    backdrop-filter: blur(10px);
+  }
+
+  /* Configurações de animação para dispositivos que suportam movimento */
+  @media (prefers-reduced-motion: no-preference) {
+    .service-icon-wrapper {
+      will-change: transform;
+    }
+
+    article:hover .service-icon-wrapper {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  }
+
+  /* Keyframes para animação de pulso */
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  /* Estilo de foco para acessibilidade */
+  article:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+  }
+
+  /* Desativa animações para usuários que preferem movimento reduzido */
+  @media (prefers-reduced-motion: reduce) {
+    article,
+    .service-icon-wrapper,
+    article * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>

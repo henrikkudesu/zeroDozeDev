@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus | Digital Experiences That Matter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .card-gradient {
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-pulse-slow {
+            animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-opacity-90 backdrop-blur-md bg-[#0f172a] border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold gradient-text">Nexus</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#home"
+                            class="nav-link text-slate-200 hover:text-white px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#services"
+                            class="nav-link text-slate-200 hover:text-white px-3 py-2 text-sm font-medium">Services</a>
+                        <a href="#work"
+                            class="nav-link text-slate-200 hover:text-white px-3 py-2 text-sm font-medium">Work</a>
+                        <a href="#about"
+                            class="nav-link text-slate-200 hover:text-white px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#contact"
+                            class="nav-link text-slate-200 hover:text-white px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-slate-200 hover:text-white focus:outline-none">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0f172a] border-t border-slate-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home"
+                    class="block px-3 py-2 text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800 rounded-md">Home</a>
+                <a href="#services"
+                    class="block px-3 py-2 text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800 rounded-md">Services</a>
+                <a href="#work"
+                    class="block px-3 py-2 text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800 rounded-md">Work</a>
+                <a href="#about"
+                    class="block px-3 py-2 text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800 rounded-md">About</a>
+                <a href="#contact"
+                    class="block px-3 py-2 text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800 rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient pt-32 pb-20 md:pt-40 md:pb-32 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                        <span class="text-slate-300">We Build</span>{" "}
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                            Digital
+                        </span>
+                        <br />
+                        <span class="text-slate-300">Experiences</span>{" "}
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                            That
+                        </span>
+                        <br />
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-purple-500">
+                            Matter
+                        </span>
+                    </h1>
+                    <p class="text-lg text-slate-400 mb-8 max-w-lg">
+                        We craft beautiful, functional websites and applications that drive results for your business.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact"
+                            class="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                            Get Started
+                        </a>
+                        <a href="#work"
+                            class="px-8 py-3 border border-slate-600 text-slate-300 font-medium rounded-lg hover:bg-slate-800 transition-all duration-300">
+                            View Our Work
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="relative z-10 animate-float">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Web Development" class="rounded-2xl shadow-2xl border border-slate-700">
+                    </div>
+                    <div
+                        class="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-blue-500 opacity-20 blur-3xl animate-pulse-slow">
+                    </div>
+                    <div
+                        class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-purple-500 opacity-20 blur-3xl animate-pulse-slow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="py-16 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-slate-500 mb-8">TRUSTED BY INNOVATIVE COMPANIES</p>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center">
+                <div class="flex justify-center">
+                    <img src="https://logo.clearbit.com/netflix.com" alt="Netflix"
+                        class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://logo.clearbit.com/airbnb.com" alt="Airbnb"
+                        class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://logo.clearbit.com/spotify.com" alt="Spotify"
+                        class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://logo.clearbit.com/slack.com" alt="Slack"
+                        class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://logo.clearbit.com/uber.com" alt="Uber"
+                        class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-[#0f172a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-sm font-semibold tracking-wider uppercase text-blue-400">Our Services</span>
+                <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+                    What We <span class="gradient-text">Offer</span>
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-400">
+                    Comprehensive digital solutions tailored to your business needs.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="card-gradient p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-blue-500 bg-opacity-10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-2xl text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Web Development</h3>
+                    <p class="text-slate-400 mb-4">
+                        Custom websites built with modern technologies to ensure performance, security, and scalability.
+                    </p>
+                    <ul class="space-y-2 text-slate-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-400 mr-2"></i>
+                            Responsive Design
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-400 mr-2"></i>
+                            CMS Integration
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-400 mr-2"></i>
+                            E-commerce Solutions
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="card-gradient p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-purple-500 bg-opacity-10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-2xl text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Mobile Development</h3>
+                    <p class="text-slate-400 mb-4">
+                        Cross-platform mobile applications that deliver seamless user experiences across all devices.
+                    </p>
+                    <ul class="space-y-2 text-slate-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-purple-400 mr-2"></i>
+                            iOS & Android
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-purple-400 mr-2"></i>
+                            React Native
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-purple-400 mr-2"></i>
+                            Performance Optimization
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="card-gradient p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-green-500 bg-opacity-10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-paint-brush text-2xl text-green-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">UI/UX Design</h3>
+                    <p class="text-slate-400 mb-4">
+                        Beautiful, intuitive interfaces designed to engage users and drive conversions.
+                    </p>
+                    <ul class="space-y-2 text-slate-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                            User Research
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                            Wireframing & Prototyping
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                            Interaction Design
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="py-20 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-sm font-semibold tracking-wider uppercase text-purple-400">Our Portfolio</span>
+                <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+                    Featured <span class="gradient-text">Projects</span>
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-400">
+                    Some of our recent work that showcases our expertise and creativity.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="group relative overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Project 1"
+                        class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <h3 class="text-xl font-bold text-white mb-2">E-commerce Platform</h3>
+                        <p class="text-slate-300 mb-4">A custom online store with advanced product filtering and
+                            checkout</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-300 text-xs rounded-full">React</span>
+                            <span
+                                class="px-3 py-1 bg-purple-500 bg-opacity-20 text-purple-300 text-xs rounded-full">Node.js</span>
+                            <span
+                                class="px-3 py-1 bg-green-500 bg-opacity-20 text-green-300 text-xs rounded-full">MongoDB</span>
+                        </div>
+                    </div>
+                    <a href="#" class="absolute inset-0 z-10"></a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group relative overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Project 2"
+                        class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <h3 class="text-xl font-bold text-white mb-2">Mobile Banking App</h3>
+                        <p class="text-slate-300 mb-4">Secure financial management application with biometric
+                            authentication</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-300 text-xs rounded-full">React
+                                Native</span>
+                            <span
+                                class="px-3 py-1 bg-purple-500 bg-opacity-20 text-purple-300 text-xs rounded-full">Firebase</span>
+                            <span
+                                class="px-3 py-1 bg-green-500 bg-opacity-20 text-green-300 text-xs rounded-full">GraphQL</span>
+                        </div>
+                    </div>
+                    <a href="#" class="absolute inset-0 z-10"></a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="group relative overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Project 3"
+                        class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <h3 class="text-xl font-bold text-white mb-2">SaaS Dashboard</h3>
+                        <p class="text-slate-300 mb-4">Analytics platform with real-time data visualization and
+                            reporting</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-300 text-xs rounded-full">Vue.js</span>
+                            <span
+                                class="px-3 py-1 bg-purple-500 bg-opacity-20 text-purple-300 text-xs rounded-full">D3.js</span>
+                            <span
+                                class="px-3 py-1 bg-green-500 bg-opacity-20 text-green-300 text-xs rounded-full">PostgreSQL</span>
+                        </div>
+                    </div>
+                    <a href="#" class="absolute inset-0 z-10"></a>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="#"
+                    class="inline-flex items-center px-6 py-3 border border-slate-600 text-slate-300 font-medium rounded-lg hover:bg-slate-800 transition-all duration-300 group">
+                    View All Projects
+                    <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-[#0f172a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Our Team" class="rounded-2xl shadow-2xl border border-slate-700">
+                    <div
+                        class="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-blue-500 opacity-20 blur-3xl animate-pulse-slow">
+                    </div>
+                    <div
+                        class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-purple-500 opacity-20 blur-3xl animate-pulse-slow">
+                    </div>
+                </div>
+                <div>
+                    <span class="text-sm font-semibold tracking-wider uppercase text-blue-400">About Us</span>
+                    <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl mb-6">
+                        Who We <span class="gradient-text">Are</span>
+                    </h2>
+                    <p class="text-slate-400 mb-6">
+                        Nexus is a team of passionate designers, developers, and strategists dedicated to creating
+                        digital experiences that make an impact. Founded in 2015, we've grown from a small studio to a
+                        full-service digital agency serving clients worldwide.
+                    </p>
+                    <p class="text-slate-400 mb-8">
+                        Our approach combines technical expertise with creative thinking to deliver solutions that are
+                        not only beautiful but also drive real business results. We believe in building long-term
+                        partnerships with our clients based on trust, transparency, and exceptional results.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <div class="text-4xl font-bold text-blue-400 mb-2">150+</div>
+                            <div class="text-slate-400">Projects Completed</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold text-purple-400 mb-2">98%</div>
+                            <div class="text-slate-400">Client Satisfaction</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold text-green-400 mb-2">25+</div>
+                            <div class="text-slate-400">Team Members</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold text-yellow-400 mb-2">7</div>
+                            <div class="text-slate-400">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-sm font-semibold tracking-wider uppercase text-purple-400">Testimonials</span>
+                <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+                    What Our <span class="gradient-text">Clients Say</span>
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-400">
+                    Don't just take our word for it - hear from our satisfied clients.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="card-gradient p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Sarah Johnson</h4>
+                            <p class="text-sm text-slate-400">CEO, TechStart</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 mb-6">
+                        "Working with Nexus was a game-changer for our business. Their team delivered a stunning website
+                        that perfectly represents our brand and has significantly increased our online conversions."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="card-gradient p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Michael Chen</h4>
+                            <p class="text-sm text-slate-400">Founder, GreenLife</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 mb-6">
+                        "The mobile app Nexus developed for us exceeded all expectations. Their attention to detail and
+                        user experience focus resulted in an app our customers love to use every day."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="card-gradient p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emma Rodriguez"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Emma Rodriguez</h4>
+                            <p class="text-sm text-slate-400">Marketing Director, StyleHub</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 mb-6">
+                        "Nexus transformed our e-commerce platform with their innovative design and development
+                        approach. Our sales have increased by 150% since the new site launched."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-[#0f172a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-sm font-semibold tracking-wider uppercase text-blue-400">Get In Touch</span>
+                    <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl mb-6">
+                        Let's <span class="gradient-text">Work Together</span>
+                    </h2>
+                    <p class="text-slate-400 mb-8 max-w-lg">
+                        Ready to start your project? Fill out the form or contact us directly. We'd love to hear about
+                        your ideas and how we can help bring them to life.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-blue-500 bg-opacity-10 flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-blue-400"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-white">Our Office</h4>
+                                <p class="text-slate-400">123 Digital Lane, Tech City, TC 10101</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-purple-500 bg-opacity-10 flex items-center justify-center">
+                                    <i class="fas fa-envelope text-purple-400"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-white">Email Us</h4>
+                                <p class="text-slate-400">hello@nexus.dev</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-green-500 bg-opacity-10 flex items-center justify-center">
+                                    <i class="fas fa-phone-alt text-green-400"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-white">Call Us</h4>
+                                <p class="text-slate-400">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-gradient p-8 rounded-2xl">
+                    <form>
+                        <div class="grid grid-cols-1 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-slate-300 mb-1">Full
+                                    Name</label>
+                                <input type="text" id="name"
+                                    class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-slate-500 transition-all"
+                                    placeholder="John Doe">
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-slate-300 mb-1">Email
+                                    Address</label>
+                                <input type="email" id="email"
+                                    class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-slate-500 transition-all"
+                                    placeholder="john@example.com">
+                            </div>
+
+                            <div>
+                                <label for="project" class="block text-sm font-medium text-slate-300 mb-1">Project
+                                    Type</label>
+                                <select id="project"
+                                    class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-slate-500 transition-all">
+                                    <option value="" disabled selected>Select a project type</option>
+                                    <option value="web">Website Development</option>
+                                    <option value="mobile">Mobile App Development</option>
+                                    <option value="design">UI/UX Design</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-slate-300 mb-1">Your
+                                    Message</label>
+                                <textarea id="message" rows="4"
+                                    class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-slate-500 transition-all"
+                                    placeholder="Tell us about your project..."></textarea>
+                            </div>
+
+                            <div>
+                                <button type="submit"
+                                    class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                                    Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <h3 class="text-xl font-bold gradient-text mb-4">Nexus</h3>
+                    <p class="text-slate-400 mb-6">
+                        We build digital experiences that matter. Transforming ideas into reality through design and
+                        technology.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-blue-500 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-blue-600 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-purple-600 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-red-500 hover:text-white transition-colors">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Web Development</a>
+                        </li>
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Mobile Development</a>
+                        </li>
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">UI/UX Design</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">E-commerce</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Digital Strategy</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Our Team</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Newsletter</h4>
+                    <p class="text-slate-400 mb-4">
+                        Subscribe to our newsletter for the latest updates and insights.
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email"
+                            class="px-4 py-2 bg-slate-800 border border-slate-700 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-blue-500 text-white w-full">
+                        <button type="submit"
+                            class="px-4 py-2 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600 transition-colors">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-slate-500 text-sm mb-4 md:mb-0">
+                    © 2023 Nexus. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-500 hover:text-slate-300 text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-slate-500 hover:text-slate-300 text-sm transition-colors">Terms of
+                        Service</a>
+                    <a href="#" class="text-slate-500 hover:text-slate-300 text-sm transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.add('hidden');
+
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add shadow to navbar on scroll
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+
+        // Form submission
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                // Here you would typically send the form data to your server
+                alert('Thank you for your message! We will get back to you soon.');
+                form.reset();
+            });
+        }
+    </script>
+</body>
+
+</html>

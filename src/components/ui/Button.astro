@@ -1,0 +1,39 @@
+---
+// src/components/ui/Button.astro
+// Desestruturação das props: variant (com valor padrão 'primary'), href e children
+const { variant = 'primary', href, children } = Astro.props;
+---
+
+{
+  // Renderização condicional: se href existir, renderiza um link, caso contrário, um botão
+  href ? (
+    <a
+      href={href}
+      class={`
+      px-8 py-3 font-bold rounded-md transition text-center
+      ${
+        // Estilização condicional baseada na variante
+        variant === 'primary'
+          ? 'bg-accent text-primary hover:bg-accentDark glow' // Estilo para variante primária
+          : 'border-2 border-light text-light hover:bg-light hover:bg-opacity-10 gradient-border' // Estilo para outras variantes
+      }
+    `}
+    >
+      {children}
+    </a>
+  ) : (
+    <button
+      class={`
+      px-8 py-3 font-bold rounded-md transition text-center
+      ${
+        // Mesma lógica de estilização condicional aplicada ao botão
+        variant === 'primary'
+          ? 'bg-accent text-primary hover:bg-accentDark glow'
+          : 'border-2 border-light text-light hover:bg-light hover:bg-opacity-10 gradient-border'
+      }
+    `}
+    >
+      {children}
+    </button>
+  )
+}

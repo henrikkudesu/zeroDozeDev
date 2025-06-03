@@ -1,22 +1,83 @@
+---
+import '../styles/global.css';
+import { Font } from 'astro:assets';
+
+// Define a interface de propriedades que o layout pode receber
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+// Valores padrão para as propriedades do layout
+const {
+  title = 'zeroDoze Dev',
+  description = 'Site sobre desenvolvimento de software, tecnologia e programação',
+  image = '/social-image.webp',
+  canonicalURL = Astro.url.href,
+} = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="pt-BR">
+  <head>
+    <!-- Carrega a fonte Fira Code como variável CSS -->
+    <Font cssVariable="--font-fira-code" preload />
+
+    <!-- Meta tags básicas -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Configuração de favicons para diferentes dispositivos -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Meta tags para SEO -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Meta tags para compartilhamento no Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Meta tags para compartilhamento no Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Meta tags adicionais -->
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="zeroDoze Dev" />
+  </head>
+  <body>
+    <!-- Slot para inserir o conteúdo da página -->
+    <slot />
+    <!-- Script principal do site -->
+    <script src="/src/scripts/main.ts" type="module"></script>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  /* Estilos básicos para prevenir scroll horizontal e definir fonte padrão */
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-fira-code);
+  }
 </style>

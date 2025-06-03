@@ -1,0 +1,110 @@
+---
+import Card from './ui/Card.astro';
+import TechCard from './ui/TechCard.astro';
+import { SERVICES, TECHNOLOGIES } from '../utils/constants';
+
+interface Props {
+  className?: string;
+}
+
+export interface Technology {
+  name: string;
+  icon: string;
+  category: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<section
+  id="services"
+  class:list={['py-20 bg-[#0f172a]', className]}
+  aria-labelledby="services-title"
+>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header: Serviços -->
+    <header class="text-center mb-16 fade-in-up">
+      <span
+        class="inline-block text-sm font-semibold tracking-wider uppercase text-blue-400 mb-2"
+        aria-hidden="true"
+      >
+        Nossos Serviços
+      </span>
+      <h2
+        id="services-title"
+        class="mt-4 text-3xl md:text-4xl font-bold text-white"
+      >
+        O Que <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"
+          >Oferecemos</span
+        >
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-400">
+        Soluções completas de desenvolvimento web adaptadas às necessidades do
+        seu negócio.
+      </p>
+    </header>
+
+    <!-- Services Grid -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr mb-32"
+      role="list"
+    >
+      {
+        SERVICES.map((service, index) => (
+          <div
+            class="fade-in-up"
+            style={`animation-delay: ${index * 0.2}s`}
+            role="listitem"
+          >
+            <Card service={service} />
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Section Header: Tecnologias -->
+    <header class="text-center mb-16 fade-in-up">
+      <span
+        class="inline-block text-sm font-semibold tracking-wider uppercase text-blue-400 mb-2"
+        aria-hidden="true"
+      >
+        Tech Stack
+      </span>
+      <h2
+        id="tech-title"
+        class="mt-4 text-3xl md:text-4xl font-bold text-white"
+      >
+        Tecnologias que <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"
+          >Utilizamos</span
+        >
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-400">
+        Trabalhamos com as ferramentas mais modernas e eficientes do mercado.
+      </p>
+    </header>
+
+    <!-- Technologies Grid -->
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6"
+      role="list"
+    >
+      {
+        TECHNOLOGIES.map((tech: Technology, index: number) => (
+          <div
+            class="fade-in-up"
+            style={`animation-delay: ${index * 0.1}s`}
+            role="listitem"
+          >
+            <TechCard
+              name={tech.name}
+              icon={tech.icon}
+              category={tech.category}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

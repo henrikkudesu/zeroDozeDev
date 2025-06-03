@@ -1,0 +1,99 @@
+---
+// src/components/Contact.astro
+---
+
+<section id="contact" class="py-20 bg-[#0f172a] relative">
+  <div class="container mx-auto px-6">
+    <!-- Cabeçalho da Seção de Contato -->
+    <div class="text-center mb-16">
+      <span
+        class="text-sm font-semibold tracking-wider uppercase text-blue-400"
+      >
+        Entre em Contato
+      </span>
+      <!-- Título principal com gradiente -->
+      <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+        Vamos <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"
+          >Trabalhar Juntos</span
+        >
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-400">
+        Pronto para iniciar seu projeto? Preencha o formulário ou entre em
+        contato diretamente conosco.
+      </p>
+    </div>
+
+    <!-- Início do Formulário de Contato -->
+    <div class="max-w-4xl mx-auto">
+      <!-- Grid layout com 2 colunas em telas médias -->
+      <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Campo Nome -->
+        <div>
+          <label for="name" class="block mb-3 text-slate-300 font-medium">
+            Seu Nome
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="João Silva"
+            class="w-full px-5 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-white placeholder-slate-400 transition-all duration-200 outline-none"
+          />
+        </div>
+
+        <!-- Campo Email -->
+        <div>
+          <label for="email" class="block mb-3 text-slate-300 font-medium">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="joao@exemplo.com"
+            class="w-full px-5 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-white placeholder-slate-400 transition-all duration-200 outline-none"
+          />
+        </div>
+
+        <!-- Campo Assunto - Ocupa 2 colunas -->
+        <div class="md:col-span-2">
+          <label for="subject" class="block mb-3 text-slate-300 font-medium">
+            Assunto
+          </label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="Consulta de Projeto"
+            class="w-full px-5 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-white placeholder-slate-400 transition-all duration-200 outline-none"
+          />
+        </div>
+
+        <!-- Campo Mensagem - Área de texto que ocupa 2 colunas -->
+        <div class="md:col-span-2">
+          <label for="message" class="block mb-3 text-slate-300 font-medium">
+            Sua Mensagem
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Conte-nos sobre o seu projeto..."
+            class="w-full px-5 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-white placeholder-slate-400 transition-all duration-200 outline-none resize-none"
+          ></textarea>
+        </div>
+
+        <!-- Botão de Envio com Efeito Gradiente -->
+        <div class="md:col-span-2 text-center">
+          <button
+            type="submit"
+            class="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40"
+          >
+            Enviar Mensagem
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

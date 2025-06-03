@@ -1,0 +1,143 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/social-image-2.png';
+---
+
+<!-- Seção principal do Hero com gradiente de fundo -->
+<section
+  id="home"
+  class="hero-gradient pt-32 pb-20 md:pt-40 md:pb-32 px-4 sm:px-6 lg:px-8 text-white"
+  aria-labelledby="hero-heading"
+>
+  <div class="max-w-7xl mx-auto">
+    <!-- Grid de duas colunas para layout responsivo -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <!-- Conteúdo textual com animação fade-in -->
+      <div class="fade-in-up">
+        <!-- Título principal com gradiente de texto -->
+        <h1
+          id="hero-heading"
+          class="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+        >
+          <span class="text-slate-300">Construímos</span>{' '}
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"
+            >Experiências</span
+          ><br />
+          <span class="animate-fade-in">Digitais que Importam</span>
+        </h1>
+
+        <!-- Texto descritivo -->
+        <p class="text-lg md:text-xl text-slate-400 mb-8 max-w-lg">
+          Transformando ideias em soluções web excepcionais com tecnologia de
+          ponta e design criativo personalizado para o seu negócio.
+        </p>
+
+        <!-- Botões de chamada para ação (CTA) -->
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="#contact"
+            class="primary-button"
+            role="button"
+            aria-label="Iniciar seu projeto"
+          >
+            Iniciar seu Projeto
+          </a>
+          <a
+            href="/about"
+            class="secondary-button"
+            role="button"
+            aria-label="Ver nossos trabalhos"
+          >
+            Sobre Nós
+          </a>
+        </div>
+      </div>
+
+      <!-- Conteúdo visual com imagem e efeitos decorativos -->
+      <div class="relative group fade-in-right">
+        <!-- Imagem otimizada com diferentes tamanhos para responsividade -->
+        <Image
+          src={heroImage}
+          widths={[400, 800, 1200, heroImage.width]}
+          sizes="(max-width: 640px) 400px, (max-width: 1024px) 800px, (max-width: 1600px) 1200px, 100vw"
+          alt="Equipe trabalhando em desenvolvimento web"
+          class="hero-image w-full h-auto rounded-2xl shadow-2xl border border-slate-700 transition-transform duration-500 group-hover:scale-[1.01]"
+          loading="eager"
+          format="avif"
+        />
+
+        <!-- Elementos decorativos (círculos com gradiente e blur) -->
+        <div
+          class="absolute -bottom-4 -left-4 w-24 h-24 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-xl"
+          aria-hidden="true"
+        >
+        </div>
+        <div
+          class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full blur-xl"
+          aria-hidden="true"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import 'tailwindcss';
+
+  /* Gradiente de fundo do hero */
+  .hero-gradient {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  }
+
+  /* Estilização do botão primário com gradiente e efeitos hover */
+  .primary-button {
+    @apply px-6 py-3
+           bg-gradient-to-r from-blue-500 to-purple-600
+           font-semibold rounded-lg
+           transition-all duration-300
+           shadow-lg shadow-blue-500/30
+           hover:from-blue-600 hover:to-purple-700
+           hover:scale-105
+           hover:shadow-[0_0_15px_rgba(59,130,246,0.5)];
+  }
+
+  /* Estilização do botão secundário com borda e efeitos hover */
+  .secondary-button {
+    @apply px-6 py-3
+           border-2 border-slate-600
+           font-semibold rounded-lg
+           transition-all duration-300
+           hover:border-slate-400
+           hover:bg-slate-800/50;
+  }
+
+  /* Animação dos círculos decorativos */
+  .decorative-circle {
+    @apply absolute w-32 h-32 rounded-full opacity-20 blur-3xl;
+    animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Posicionamento dos círculos decorativos */
+  .decorative-circle.blue {
+    @apply -bottom-8 -left-8 bg-blue-500;
+  }
+
+  .decorative-circle.purple {
+    @apply -top-8 -right-8 bg-purple-500;
+  }
+
+  /* Keyframes para animação de pulse */
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.1;
+      transform: scale(1.1);
+    }
+  }
+</style>

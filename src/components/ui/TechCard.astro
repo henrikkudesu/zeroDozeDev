@@ -1,0 +1,84 @@
+---
+// Define a interface com as propriedades necessárias para o componente
+interface Props {
+  name: string; // Nome da tecnologia
+  icon: string; // Caminho para o ícone
+  category?: string; // Categoria opcional
+}
+
+const { name, icon, category } = Astro.props;
+---
+
+<!-- Card principal com gradiente e efeitos de hover -->
+<div
+  class="card-gradient group relative p-5 rounded-xl transition-all duration-300
+  bg-slate-800/40 border border-slate-700/30 overflow-hidden
+  hover:shadow-[0_0_25px_rgba(59,130,246,0.15)] hover:-translate-y-1
+  text-center flex flex-col items-center justify-center h-full"
+>
+  <!-- Overlay com gradiente que aparece no hover -->
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+  </div>
+
+  <!-- Container do ícone com efeitos de hover -->
+  <div
+    class="tech-icon-wrapper relative z-10 w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-slate-900/50 p-3 group-hover:bg-slate-900/80 transition-all duration-300"
+  >
+    <img
+      src={icon}
+      alt={`${name} logo`}
+      class="max-w-full max-h-full object-contain filter group-hover:brightness-110"
+    />
+  </div>
+
+  <!-- Nome da tecnologia com efeito de cor no hover -->
+  <h3
+    class="relative z-10 text-white font-medium group-hover:text-blue-300 transition-colors duration-300"
+  >
+    {name}
+  </h3>
+
+  <!-- Seção de categoria opcional com linha decorativa -->
+  {
+    category && (
+      <div class="relative z-10 mt-2 flex flex-col items-center">
+        <div class="w-8 h-0.5 bg-gradient-to-r from-blue-500/40 to-purple-500/40 rounded mb-1.5" />
+        <p class="text-xs text-slate-400 group-hover:text-slate-300 transition-colors duration-300">
+          {category}
+        </p>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  /* Animação de brilho no ícone durante hover */
+  .tech-icon-wrapper {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    transition: box-shadow 0.3s ease;
+  }
+
+  /* Adiciona sombra de brilho ao ícone no hover */
+  .group:hover .tech-icon-wrapper {
+    box-shadow: 0 0 12px 0 rgba(59, 130, 246, 0.2);
+  }
+
+  /* Efeitos de hover apenas para dispositivos com mouse */
+  @media (hover: hover) {
+    .group:hover .tech-icon-wrapper img {
+      transform: translateY(-2px);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  /* Desativa animações para usuários que preferem menos movimento */
+  @media (prefers-reduced-motion: reduce) {
+    .group:hover .tech-icon-wrapper,
+    .group:hover .tech-icon-wrapper img {
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>

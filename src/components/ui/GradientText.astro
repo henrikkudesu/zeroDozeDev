@@ -1,0 +1,34 @@
+---
+// src/components/ui/GradientText.astro
+const { variant = 'default', children } = Astro.props;
+---
+
+<span
+  class={`
+  ${
+    variant === 'default'
+      ? 'gradient-text'
+      : variant === 'accent'
+        ? 'gradient-text-accent'
+        : 'gradient-text-primary'
+  }
+`}
+>
+  {children}
+  <style>
+    /* Estilo base para todos os textos com gradiente */
+    .gradient-text {
+      @apply bg-gradient-to-br from-indigo-500 to-purple-500 inline-block text-transparent bg-clip-text;
+    }
+
+    /* Variante com cores de destaque */
+    .gradient-text-accent {
+      @apply bg-gradient-to-br from-purple-600 to-pink-500 inline-block text-transparent bg-clip-text;
+    }
+
+    /* Variante com cores primárias */
+    .gradient-text-primary {
+      @apply bg-gradient-to-br from-blue-600 to-purple-500 inline-block text-transparent bg-clip-text;
+    }
+  </style>
+</span>
