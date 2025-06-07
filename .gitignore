@@ -26,3 +26,6 @@ pnpm-debug.log*
 example.html
 .example.html
 ./example.html
+
+.netlify/build/
+.netlify/v1/functions/ssr/
