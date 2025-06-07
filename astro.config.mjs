@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   output: 'server',
   adapter: netlify(),
-  site: 'zerodozedev.com.br',
+  site: 'http://www.zerodozedev.com.br',
   vite: {
     plugins: [tailwindcss()],
     build: {
