@@ -1,0 +1,38 @@
+---
+// src/pages/success.astro
+
+import '../styles/global.css';
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = false;
+
+const url = new URL(Astro.request.url);
+const isFormSubmission = url.searchParams.get('submitted') === 'true';
+
+if (!isFormSubmission) {
+  return Astro.redirect('/');
+}
+---
+
+<Layout title="Mensagem Enviada - ZeroDoze">
+  <section
+    class="py-20 bg-[#0f172a] min-h-screen flex items-center justify-center"
+  >
+    <div class="container mx-auto px-6 text-center">
+      <h1
+        class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 font-fira-code"
+      >
+        Mensagem Enviada com Sucesso!
+      </h1>
+      <p class="text-slate-400 text-lg mb-8 font-fira-code">
+        Obrigado pelo contato. Retornaremos em breve!
+      </p>
+      <a
+        href="/"
+        class="inline-block px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 font-fira-code"
+      >
+        Voltar para a Página Inicial
+      </a>
+    </div>
+  </section>
+</Layout>

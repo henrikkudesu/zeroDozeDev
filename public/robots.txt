@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://zerodozedev.com.br/sitemap-index.xml

@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
 import netlify from '@astrojs/netlify/functions';
+import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -9,6 +10,7 @@ export default defineConfig({
   output: 'server',
   adapter: netlify(),
   site: 'http://www.zerodozedev.com.br',
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
     build: {

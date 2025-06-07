@@ -15,13 +15,16 @@ const {
   title = 'zeroDoze Dev',
   description = 'Site sobre desenvolvimento de software, tecnologia e programação',
   image = '/social-image.webp',
-  canonicalURL = Astro.url.href,
+  canonicalURL = 'http://zerodozedev.com.br',
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
     <!-- Carrega a fonte Fira Code como variável CSS -->
     <Font cssVariable="--font-fira-code" preload />
 
@@ -32,6 +35,7 @@ const {
 
     <!-- Configuração de favicons para diferentes dispositivos -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
