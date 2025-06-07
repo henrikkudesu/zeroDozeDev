@@ -1,15 +1,14 @@
 ---
+// src/pages/success.astro
+
 import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
 
-// Indica que esta página deve ser renderizada no servidor
 export const prerender = false;
 
-// Verifica se a página está sendo acessada após um envio de formulário
-const referer = Astro.request.headers.get('referer');
-const isFormSubmission = referer?.includes(Astro.url.origin);
+const url = new URL(Astro.request.url);
+const isFormSubmission = url.searchParams.get('submitted') === 'true';
 
-// Se não for uma submissão de formulário, redireciona para a home
 if (!isFormSubmission) {
   return Astro.redirect('/');
 }
